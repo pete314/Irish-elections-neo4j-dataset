@@ -24,16 +24,17 @@ def downloader_manul_test():
 def link_crawler_manual_test():
     """Test LinkCrawler
     """
-    sites_domain = 'http://electionsireland.org/results/general/32dail.cfm'
-    site_test = 'https://blog.crosssec.com'
-    link_crawler = LinkCrawler(site_test)
-    result = link_crawler.run_thread()
+    site_start = 'http://electionsireland.org/results/general/32dail.cfm'
+    site_root = 'http://electionsireland.org'
+
+    link_crawler = LinkCrawler(site_root, site_start)
+    result = link_crawler.start_crawl()
     if len(result) > 0:
-        print "Found %d unique links!" % len(result)
+        print "\n\nFound %d unique links!" % len(result)
         for key, page in result.iteritems():
             print page.get_url()
     else:
-        print "Something went wrong :("
+        print "\n\nSomething went wrong :("
 
 
 if __name__ == '__main__':
