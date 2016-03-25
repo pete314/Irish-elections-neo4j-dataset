@@ -20,12 +20,24 @@
     <favorites_list name="python" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Scraper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrape/factory/Scraper.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="LinkCrawler.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.37366548">
+              <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+              <folding>
+                <element signature="e#188#206#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageEntity.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrape/entity/PageEntity.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -35,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/scrape/factory/Downloader.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="53" />
+              <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
               <folding>
                 <element signature="e#207#222#0" expanded="true" />
               </folding>
@@ -47,19 +59,21 @@
         <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              <folding />
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+              <folding>
+                <element signature="e#133#181#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestDownloader.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestDownloader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrape/tests/TestDownloader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60854095">
-              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="79" />
               <folding>
-                <element signature="e#213#261#0" expanded="true" />
+                <element signature="e#199#247#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,6 +85,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Python default Headers" />
       </list>
     </option>
   </component>
@@ -79,16 +94,19 @@
       <list>
         <option value="$PROJECT_DIR$/scrape/factory/scraper.py" />
         <option value="$PROJECT_DIR$/scrape/factory/Scraper.py" />
-        <option value="$PROJECT_DIR$/scrape/factory/__init__.py" />
         <option value="$PROJECT_DIR$/scrape/tests/__init__.py" />
-        <option value="$PROJECT_DIR$/scrape/factory/Downloader.py" />
-        <option value="$PROJECT_DIR$/scrape/tests/manual_tests.py" />
         <option value="$PROJECT_DIR$/scrape/tests/TestDownloader.py" />
+        <option value="$PROJECT_DIR$/scrape/entity/PageEntity.py" />
+        <option value="$PROJECT_DIR$/scrape/factory/Downloader.py" />
+        <option value="$PROJECT_DIR$/scrape/factory/__init__.py" />
+        <option value="$PROJECT_DIR$/scrape/entity/__init__.py" />
+        <option value="$PROJECT_DIR$/scrape/tests/manual_tests.py" />
+        <option value="$PROJECT_DIR$/scrape/factory/LinkCrawler.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
+    <option name="x" value="1911" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1048" />
@@ -176,13 +194,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scrape" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestDownloader.test_upper">
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Python.manual_tests">
     <configuration default="false" name="manual_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -215,6 +255,28 @@
       <option name="METHOD_NAME" value="test_upper" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TestDownloader" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrape/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrape/tests/TestDownloader.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -344,14 +406,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.manual_tests" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestDownloader.test_upper" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestDownloader" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestDownloader.test_upper" />
-        <item index="1" class="java.lang.String" itemvalue="Python.manual_tests" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.manual_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestDownloader" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestDownloader.test_upper" />
       </list>
     </recent_temporary>
   </component>
@@ -369,51 +433,57 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 35m 11s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 49m 28s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 35m 39s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 53m 40s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 40m 20s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 55m 33s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 40m 34s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 55m 38s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 41m 21s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 56m 02s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 41m 49s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 56m 18s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 42m 57s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 57m 18s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestDownloader_test_upper - 2016.03.25 at 01h 43m 05s.xml">
-      <configuration name="Unittest TestDownloader.test_upper" configurationId="tests" />
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 58m 00s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 14h 59m 00s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestDownloader - 2016.03.25 at 15h 02m 04s.xml">
+      <configuration name="Unittests in TestDownloader" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <frame x="1911" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25356576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2530375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1578354" sideWeight="0.50184894" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1578354" sideWeight="0.50184894" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1578354" sideWeight="0.4981511" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3934611" sideWeight="0.4981511" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -428,32 +498,33 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scrape/factory/Scraper.py">
+    <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
-          <folding />
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="e#188#206#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrape/factory/__init__.py">
+    <entry file="file://$PROJECT_DIR$/scrape/factory/Downloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrape/tests/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
+          <caret line="5" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#207#222#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -461,7 +532,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="e#133#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/TestDownloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding>
+            <element signature="e#199#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#188#206#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -475,12 +568,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="e#133#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scrape/tests/TestDownloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60854095">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#213#261#0" expanded="true" />
+            <element signature="e#199#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/Queue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/bsddb/dbtables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="226" column="20" selection-start-line="226" selection-start-column="20" selection-end-line="226" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/hashlib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="12" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/entity/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/factory/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/entity/PageEntity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/factory/Downloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <folding>
+            <element signature="e#207#222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-762174762/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33274022">
+          <caret line="3349" column="8" selection-start-line="3349" selection-start-column="8" selection-end-line="3349" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/TestDownloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="79" />
+          <folding>
+            <element signature="e#199#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <folding>
+            <element signature="e#133#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37366548">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+          <folding>
+            <element signature="e#188#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
