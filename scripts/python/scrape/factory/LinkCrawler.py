@@ -12,6 +12,7 @@ import robotparser
 import urlparse
 import hashlib
 import sys
+import os
 from Queue import Queue
 from Downloader import Downloader
 from BeautifulSoup import BeautifulSoup
@@ -75,8 +76,9 @@ class LinkCrawler(object):
                     self.scrap_content_links(result['html'], url)
                     self.visited_pages[url_digest] = True
             else:
-                print("\nWARNING - Page blocked by robots or visited\n")
+                print("\nWARNING - Page blocked by robots or visited")
 
+        print '\n-------'
         # Recursively call itself to reach depth
         self.depth_cnt += 1
         if self.max_depth is 0:
@@ -99,6 +101,7 @@ class LinkCrawler(object):
         if html is None:
             return
         else:
+            write_to_disk(self.site_domain, site, html)
             links = []
             soup = BeautifulSoup(html)
             for tag in soup.findAll('a', href=True):
@@ -141,3 +144,14 @@ class LinkCrawler(object):
         parse_rf.set_url(urlparse.urljoin(base_url, '/robots.txt'))
         parse_rf.read()
         return parse_rf
+
+# ++++++++++++++++++++
+# Static functions From here
+def write_to_disk(root_name, file_name, html):
+    file_name = file_name.replace("/", "") + ".html"
+    basepath = os.path.dirname(__file__)
+    file_path = os.path.abspath(os.path.join(basepath, "..", "..", "scraped_data", file_name))
+
+    file_pointer = open(file_path, 'w+')
+    file_pointer.write(html)
+    file_pointer.close()

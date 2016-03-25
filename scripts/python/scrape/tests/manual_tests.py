@@ -10,7 +10,6 @@ Description: Manual tests for classes
 from scrape.factory.Downloader import Downloader
 from scrape.factory.LinkCrawler import LinkCrawler
 
-
 def downloader_manul_test():
     """Test downloader
     """
@@ -21,13 +20,10 @@ def downloader_manul_test():
     else:
         print "Something broke :( \n"
 
-def link_crawler_manual_test():
+def link_crawler_manual_test(site_root, site_start=None, depth=2):
     """Test LinkCrawler
     """
-    site_start = 'http://electionsireland.org/results/general/32dail.cfm'
-    site_root = 'http://electionsireland.org'
-
-    link_crawler = LinkCrawler(site_root, site_start)
+    link_crawler = LinkCrawler(site_root, site_start, max_depth=depth)
     result = link_crawler.start_crawl()
     if len(result) > 0:
         print "\n\nFound %d unique links!" % len(result)
@@ -39,5 +35,6 @@ def link_crawler_manual_test():
 
 if __name__ == '__main__':
     downloader_manul_test()
-    link_crawler_manual_test()
-
+    site_start = 'http://electionsireland.org/results/general/32dail.cfm'
+    site_root = 'http://electionsireland.org'
+    link_crawler_manual_test('https://crosssec.com', 'https://crosssec.com', 5)
