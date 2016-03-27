@@ -37,4 +37,4 @@ if __name__ == '__main__':
     downloader_manul_test()
     site_start = 'http://electionsireland.org/results/general/32dail.cfm'
     site_root = 'http://electionsireland.org'
-    link_crawler_manual_test('https://crosssec.com', 'https://crosssec.com', 5)
+    link_crawler_manual_test(site_root, site_start, 3)

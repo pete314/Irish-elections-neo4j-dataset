@@ -51,7 +51,7 @@ class Downloader(object):
         opener = urllib2.build_opener()
         try:
             response = opener.open(request)
-            html = response.read()
+            html = response.read().decode('utf-8')
             code = response.code
         except Exception as e:
             print 'Download error:', str(e)

@@ -101,7 +101,7 @@ class LinkCrawler(object):
         if html is None:
             return
         else:
-            write_to_disk(self.site_domain, site, html)
+            write_to_disk(site, html)
             links = []
             soup = BeautifulSoup(html)
             for tag in soup.findAll('a', href=True):
@@ -145,13 +145,15 @@ class LinkCrawler(object):
         parse_rf.read()
         return parse_rf
 
+
 # ++++++++++++++++++++
 # Static functions From here
-def write_to_disk(root_name, file_name, html):
-    file_name = file_name.replace("/", "") + ".html"
-    basepath = os.path.dirname(__file__)
-    file_path = os.path.abspath(os.path.join(basepath, "..", "..", "scraped_data", file_name))
+def write_to_disk(file_name, html):
+    file_name = file_name.replace("/", "_") + ".html"
+    file_name = file_name.replace(":", "-")
+    file_name = file_name.replace("?", "QM")
+    base_path = os.path.dirname(__file__)
+    file_path = os.path.abspath(os.path.join(base_path, "..", "..", "scraped_data", file_name))
 
-    file_pointer = open(file_path, 'w+')
-    file_pointer.write(html)
-    file_pointer.close()
+    with open(file_path, 'w+') as file_pointer:
+        file_pointer.write(html)
