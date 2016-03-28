@@ -5,10 +5,11 @@
 Author: Peter Nagy
 Since: 03 2016
 Description: This is a custom content scraper for ElectionsIreland.org
+Notes: This class is a disaster(complexity, readability, not reusable),
+        @todo: should be refactored if used in production
 """
 from BeautifulSoup import BeautifulSoup
 from lxml import html
-import string
 
 class ElectionsIrelandScraper(object):
     def __init__(self, html_content):
@@ -177,10 +178,11 @@ class ElectionsIrelandScraper(object):
             if len(total_poll_percent) > 0:
                 self.area_data['total_poll_percent'] = str_replace_items(total_poll_percent[0], {"%"}).strip()
 
+            """ DEBUG ONLY
             for data in self.area_data.itervalues():
                 print data
 
-            """
+
             for cd in candidate_data_list:
                 print "------------- candidate\n"
                 for data in cd.itervalues():
