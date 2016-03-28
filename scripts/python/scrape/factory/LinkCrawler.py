@@ -107,8 +107,8 @@ class LinkCrawler(object):
 
             """
             Debug only
-            write_to_disk(site, html)
             """
+            write_to_disk(site, html)
             if self.scraper is not None and isinstance(self.scraper, ElectionsIrelandScraper):
                 data_scraper = ElectionsIrelandScraper(html)
                 data_scraper.check_content_page(site)
@@ -174,6 +174,7 @@ def write_to_disk(file_name, html):
     file_name = file_name.replace("?", "QM")
     base_path = os.path.dirname(__file__)
     file_path = os.path.abspath(os.path.join(base_path, "..", "..", "scraped_data", file_name))
-
+    reload(sys)
+    sys.setdefaultencoding("latin-1")
     with open(file_path, 'w+') as file_pointer:
         file_pointer.write(html)

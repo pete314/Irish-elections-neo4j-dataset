@@ -64,7 +64,6 @@ class ElectionsIrelandScraper(object):
         html_tree = html.fromstring(self.html_content)
         candidant_holder = html_tree.xpath("/html/body/table[3]/tr/td[2]/h1/text()")
 
-        print candidant_holder
         if len(candidant_holder) > 0:
             candidate_name = self.extract_list_sting(candidant_holder, {"\n", "\t"})
             candidate_history_list = self.extract_candidate_history(html_tree)
@@ -135,14 +134,14 @@ class ElectionsIrelandScraper(object):
             return False
 
         self.election = element.next
-        if "General Election" in self.election:
-            self.area_data['uuid'] = uuid.uuid4().hex
-            self.area_data['election_date'] = self.election.replace("General Election: ", "").strip()
-            self.parse_consent_details()
-            self.parse_total_voters()
-            if len(self.candidate_data_list) > 0:
-                self.create_neo_nodes_election()
-                return True
+        self.area_data['uuid'] = uuid.uuid4().hex
+        self.area_data['election_date'] = self.election.replace("General Election: ", "").strip()
+        self.parse_consent_details()
+        self.parse_total_voters()
+        if len(self.candidate_data_list) > 0:
+            self.create_neo_nodes_election()
+            return True
+
         return False
 
     def create_neo_nodes_election(self):
