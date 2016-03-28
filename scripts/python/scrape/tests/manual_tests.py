@@ -20,10 +20,10 @@ def downloader_manul_test():
     else:
         print "Something broke :( \n"
 
-def link_crawler_manual_test(site_root, site_start=None, depth=2):
+def link_crawler_manual_test(site_root, site_start=None, depth=2, list_bits=list()):
     """Test LinkCrawler
     """
-    link_crawler = LinkCrawler(site_root, site_start, max_depth=depth)
+    link_crawler = LinkCrawler(site_root, site_start, max_depth=depth, focus_link_bits=list_bits)
     result = link_crawler.start_crawl()
     if len(result) > 0:
         print "\n\nFound %d unique links!" % len(result)
@@ -35,6 +35,6 @@ def link_crawler_manual_test(site_root, site_start=None, depth=2):
 
 if __name__ == '__main__':
     downloader_manul_test()
-    site_start = 'http://electionsireland.org/results/general/32dail.cfm'
+    site_start = 'http://electionsireland.org/results/general/index.cfm'
     site_root = 'http://electionsireland.org'
-    link_crawler_manual_test(site_root, site_start, 3)
+    link_crawler_manual_test(site_root, site_start, 3, {"election", "candidate", "party"})

@@ -47,3 +47,16 @@ class Neo4jWrapper(object):
         for params_dict in params_dict_list:
             batch.append(neo4j.CypherJob(cypher_statement, params_dict))
         return batch.submit()
+
+    def isrt_multiple_nodes_with_realtion(self, cypher_statement, params_dict_list, relation_statement):
+        """
+        The relation script will match current insert an connect to the static node given in statement
+        :param cypher_statement:
+        :param params_dict_list: list of dict to insert
+        :param relation_statement:
+        :return:
+        """
+        batch = neo4j.WriteBatch(self.graph_db)
+        for params_dict in params_dict_list:
+            batch.append(neo4j.CypherJob(cypher_statement, params_dict))
+        return batch.submit()

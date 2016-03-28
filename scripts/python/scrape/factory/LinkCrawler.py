@@ -17,9 +17,10 @@ from Queue import Queue
 from Downloader import Downloader
 from BeautifulSoup import BeautifulSoup
 from scrape.entity.PageEntity import PageEntity
+from scrape.factory.ElectionsIrelandScraper import ElectionsIrelandScraper
 
 DEFAULT_AGENT = 'Mozilla/5.0 (compatible; http://research.gmit.ie/)'
-
+DEFAULT_SCRAPER = ElectionsIrelandScraper("")
 
 def url_md5_digest(url):
     """Simple method to create md5 to speed up dict and save memory"""
@@ -27,7 +28,7 @@ def url_md5_digest(url):
 
 
 class LinkCrawler(object):
-    def __init__(self, site_domain, starting_url=None, page_map=None, timeout=60, user_agent=None, max_depth=2):
+    def __init__(self, site_domain, starting_url=None, focus_link_bits = list(), page_map=None, timeout=60, user_agent=None, max_depth=2, scraper=DEFAULT_SCRAPER):
         """
         Init link crawler
         :param site_domain: The domain to check
@@ -47,6 +48,8 @@ class LinkCrawler(object):
         self.max_depth = max_depth
         self.visited_pages = dict()
         self.depth_cnt = 0
+        self.scraper = scraper
+        self.focus_link_bits = focus_link_bits
 
     def start_crawl(self):
         print "Start crawling \n"
@@ -101,7 +104,15 @@ class LinkCrawler(object):
         if html is None:
             return
         else:
+
+            """
+            Debug only
             write_to_disk(site, html)
+            """
+            if self.scraper is not None and isinstance(self.scraper, ElectionsIrelandScraper):
+                data_scraper = ElectionsIrelandScraper(html)
+                data_scraper.check_content_page(site)
+
             links = []
             soup = BeautifulSoup(html)
             for tag in soup.findAll('a', href=True):
@@ -110,7 +121,7 @@ class LinkCrawler(object):
                     if same_domain_only and self.check_same_domain(site, link):
                         # THIS WILL EXCLUDE EXTERNAL LINKS AND ONLY LOOK FOR LINKS ON SAME DOMAIN
                         link_hash = url_md5_digest(link)
-                        if not self.page_map.has_key(link_hash):
+                        if not self.page_map.has_key(link_hash) and self.check_link_in_focus(link):
                             # THIS WILL TAKE CARE OF DUPLICATES
                             self.page_map[link_hash] = PageEntity(link)
                             self.queue.put(link)
@@ -145,6 +156,15 @@ class LinkCrawler(object):
         parse_rf.read()
         return parse_rf
 
+    def check_link_in_focus(self, link):
+        if len(self.focus_link_bits) == 0:
+            return True
+
+        for str_bits in self.focus_link_bits:
+            if str_bits in link:
+                return True
+
+        return False
 
 # ++++++++++++++++++++
 # Static functions From here

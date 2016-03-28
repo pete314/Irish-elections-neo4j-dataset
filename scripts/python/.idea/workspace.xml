@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="39" />
+              <caret line="126" column="48" selection-start-line="126" selection-start-column="48" selection-end-line="126" selection-end-column="48" />
               <folding>
                 <element signature="e#188#206#0" expanded="true" />
               </folding>
@@ -33,14 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElectionsIrelandScraper.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ElectionsIrelandScraper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrape/factory/ElectionsIrelandScraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45293072">
-              <caret line="58" column="97" selection-start-line="58" selection-start-column="97" selection-end-line="58" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
               <folding>
                 <element signature="e#292#341#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uuid.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/uuid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="575" column="24" selection-start-line="575" selection-start-column="15" selection-end-line="575" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,10 +59,20 @@
         <entry file="file://$PROJECT_DIR$/store/neo4j/Neo4jWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+              <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
               <folding>
                 <element signature="e#223#247#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manual_tests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9218472">
+              <caret line="39" column="90" selection-start-line="39" selection-start-column="90" selection-end-line="39" selection-end-column="90" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/scrape/tests/maual_scraper_test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+              <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
               <folding>
                 <element signature="e#140#149#0" expanded="true" />
               </folding>
@@ -91,13 +111,13 @@
         <option value="$PROJECT_DIR$/scrape/factory/__init__.py" />
         <option value="$PROJECT_DIR$/scrape/entity/__init__.py" />
         <option value="$PROJECT_DIR$/scrape/tests/TestLinkCrawler.py" />
-        <option value="$PROJECT_DIR$/scrape/tests/manual_tests.py" />
         <option value="$PROJECT_DIR$/scrape/factory/BaseScraper.py" />
-        <option value="$PROJECT_DIR$/scrape/factory/LinkCrawler.py" />
         <option value="$PROJECT_DIR$/scrape/factory/Downloader.py" />
-        <option value="$PROJECT_DIR$/scrape/tests/maual_scraper_test.py" />
+        <option value="$PROJECT_DIR$/scrape/factory/LinkCrawler.py" />
         <option value="$PROJECT_DIR$/store/neo4j/Neo4jWrapper.py" />
+        <option value="$PROJECT_DIR$/scrape/tests/maual_scraper_test.py" />
         <option value="$PROJECT_DIR$/scrape/factory/ElectionsIrelandScraper.py" />
+        <option value="$PROJECT_DIR$/scrape/tests/manual_tests.py" />
       </list>
     </option>
   </component>
@@ -260,7 +280,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.maual_scraper_test">
+  <component name="RunManager" selected="Python.manual_tests">
     <configuration default="false" name="manual_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -487,9 +507,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.maual_scraper_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ElectionsIrelandScraper" />
-        <item index="2" class="java.lang.String" itemvalue="Python.manual_tests" />
+        <item index="0" class="java.lang.String" itemvalue="Python.manual_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.maual_scraper_test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ElectionsIrelandScraper" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestDownloader" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestDownloader.test_upper" />
       </list>
@@ -648,6 +668,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -692,6 +713,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,6 +879,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -893,26 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45964912">
-          <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="26" selection-end-column="39" />
-          <folding>
-            <element signature="e#133#181#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrape/tests/maual_scraper_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="e#140#149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/lxml/html/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.8952043">
@@ -929,33 +932,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
+    <entry file="file://C:/Python27/Lib/site-packages/py2neo/batch/core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="e#188#206#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.3321492">
+          <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/store/neo4j/Neo4jWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
           <folding>
             <element signature="e#223#247#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/uuid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="575" column="24" selection-start-line="575" selection-start-column="15" selection-end-line="575" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/maual_scraper_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+          <folding>
+            <element signature="e#140#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/factory/LinkCrawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="48" selection-start-line="126" selection-start-column="48" selection-end-line="126" selection-end-column="48" />
+          <folding>
+            <element signature="e#188#206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scrape/factory/ElectionsIrelandScraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45293072">
-          <caret line="58" column="97" selection-start-line="58" selection-start-column="97" selection-end-line="58" selection-end-column="97" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
           <folding>
             <element signature="e#292#341#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrape/tests/manual_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9218472">
+          <caret line="39" column="90" selection-start-line="39" selection-start-column="90" selection-end-line="39" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>

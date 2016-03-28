@@ -11,8 +11,9 @@ Notes: This class is a disaster(complexity, readability, not reusable),
 from store.neo4j.Neo4jWrapper import Neo4jWrapper
 from BeautifulSoup import BeautifulSoup
 from lxml import html
-from hashlib import sha256
+import hashlib
 import uuid
+import random
 
 class ElectionsIrelandScraper(object):
     def __init__(self, html_content):
@@ -35,22 +36,120 @@ class ElectionsIrelandScraper(object):
             "total_poll_percent": None
         }
 
-    def check_content_page(self):
+    def check_content_page(self, link):
+        if "candidate" in link:
+            # THIS IS A CANDIDTE PAGE SCRAPE
+            return self.scrape_candidate_page()
+
+        elif "election" in link:
+            # THIS IS AN ELECTION PAGE SCRAPE
+            return self.scrape_election_const_result_page()
+
+        elif "party" in link:
+            # THIS IS A PARTY PAGE SCRAPE
+            return self.scrape_party_page()
+
+    def scrape_party_page(self):
+        """
+        Sample page: http://electionsireland.org/party.cfm?election=2016&party=FF
+        :return:
+        """
+        return False
+
+    def scrape_candidate_page(self):
+        """
+        Sample page: http://electionsireland.org/candidate.cfm?ID=900
+        :return:
+        """
+        html_tree = html.fromstring(self.html_content)
+        candidant_holder = html_tree.xpath("/html/body/table[3]/tr/td[2]/h1/text()")
+
+        print candidant_holder
+        if len(candidant_holder) > 0:
+            candidate_name = self.extract_list_sting(candidant_holder, {"\n", "\t"})
+            candidate_history_list = self.extract_candidate_history(html_tree)
+            if len(candidate_history_list) > 0:
+                return self.create_candidate_history_nodes(candidate_name, candidate_history_list)
+
+        return False
+
+    def create_candidate_history_nodes(self, candidate, history_data_list):
+        """
+        Create nodes from candidate data
+        :param candidate:
+        :param hostyory_data_list:
+        :return:
+        """
+        p_uuid = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
+        create_person_node = "Create (p:Person {id:{uuid}, Name:{Name}})"
+        person_dict = {'uuid': p_uuid, 'Name': candidate}
+
+        create_person_history_node = "Create (ph:PersonHistory {id:{id}, election:{election}, date:{date}, party:{party}," \
+                                     " status:{status}, constituency:{constituency}, seat:{seat}, votes:{votes}, share:{share}," \
+                                     " quota:{quota}}) "
+                                     # "create (p:Person {id:'"+p_uuid+"'})-[:RUN_FOR]->ph"
+        db = Neo4jWrapper("", "")
+        db.insert_single_node(create_person_node, person_dict)
+        return db.insert_multiple_nodes(create_person_history_node, history_data_list)
+
+    def extract_candidate_history(self, html_tree):
+        """ Ecract the candidate data from page
+        """
+        history_table = html_tree.xpath("//html/body/table[8]/tr")
+        candidate_history_list = list()
+        for row in history_table:
+            history_data = dict()
+            date_holder = row.xpath("./td[1]/b/text()")
+            if len(date_holder) == 0:
+                continue
+
+            history_data['date'] = self.extract_list_sting(date_holder, {"\n", "\t"})
+            history_data['election'] = self.extract_list_sting(row.xpath("./td[3]/b/text()"), {"\n", "\t"})
+            history_data['party'] = self.extract_list_sting(row.xpath("./td[5]/a/img/@title"), {"\n", "\t", "Non party/"})
+            history_data['status'] = self.extract_list_sting(row.xpath("./td[7]/b/text()"), {"\n", "\t"})
+            history_data['constituency'] = self.extract_list_sting(row.xpath("./td[9]/b/a/text()"), {"\n", "\t"})
+            history_data['seat'] = self.extract_list_sting(row.xpath("./td[11]/b/text()"), {"\n", "\t"})
+            history_data['count'] = self.extract_list_sting(row.xpath("./td[13]/b/text()"), {"\n", "\t"})
+            history_data['votes'] = self.extract_list_sting(row.xpath("./td[15]/b/text()"), {"\n", "\t", ","})
+            history_data['share'] = self.extract_list_sting(row.xpath("./td[17]/b/text()"), {"\n", "\t", "%"})
+            history_data['quota'] = self.extract_list_sting(row.xpath("./td[19]/b/text()"), {"\n", "\t"})
+            history_data['id'] = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
+
+            candidate_history_list.append(history_data)
+
+        return candidate_history_list
+
+    def extract_list_sting(self, lst, replace_set=set()):
+        if len(lst) > 0:
+            return str_replace_items(lst[0], replace_set).strip()
+        else:
+            return None
+
+    def scrape_election_const_result_page(self):
+        """ Page sample: http://electionsireland.org/result.cfm?election=2016&cons=32
+        :return:
+        """
         soup = BeautifulSoup(self.html_content)
         element = soup.find("span", {"class": "title3"})
+        if element is None:
+            return False
+
         self.election = element.next
         if "General Election" in self.election:
-            self.area_data['uuid'] = create_sha256_custom_id()
+            self.area_data['uuid'] = uuid.uuid4().hex
             self.area_data['election_date'] = self.election.replace("General Election: ", "").strip()
             self.parse_consent_details()
             self.parse_total_voters()
-            self.create_neo_nodes_election()
+            if len(self.candidate_data_list) > 0:
+                self.create_neo_nodes_election()
+                return True
+        return False
 
     def create_neo_nodes_election(self):
         """ Simple node creation
         :return:
         """
-        election_area_create_statement = "CREATE (const:Constituency {id:{uuid}, area:{voters_area}, county:{voters_county}," \
+        election_area_create_statement = "CREATE (const:Constituency {id:{uuid}, name:{voters_area}, county:{voters_county}," \
                                   " date:{election_date}, seats:{seats}, candidates:{candidates}, counts:{counts}," \
                                   " electorate:{electorate}, quota:{quota}, total_valid:{total_valid}," \
                                   " total_valid_percent:{total_valid_percent}, spoilt_votes:{spoilt_votes}," \
@@ -58,7 +157,9 @@ class ElectionsIrelandScraper(object):
 
         area_candidate_create_statement = "CREATE (candid:ConstituencyCandidate {id:{uuid}, area:{voters_area}," \
                                           " election_date:{election_date}, name:{name}, party:{party}, proof_vote:{proof_vote}," \
-                                          " share_vote:{share_vote}, quota:{quota}, count:{count}, status:{status}, seat:{seat}})"
+                                          " share_vote:{share_vote}, quota:{quota}, count:{count}, status:{status}, seat:{seat}}) "
+                                          # "create (const:Constituency {id:'"+self.area_data['uuid']+"'})-[:RUN_FOR]->candid"
+
 
         db = Neo4jWrapper("", "")
         db.insert_single_node(election_area_create_statement, self.area_data)
@@ -95,16 +196,6 @@ class ElectionsIrelandScraper(object):
 
     def parse_total_voters(self):
         """Parse the area results"""
-        candidate_data = {
-            "name": None,
-            "party": None,
-            "proof_vote": None,
-            "share_vote": None,
-            "quota": None,
-            "count": 0,
-            "status": None,
-            "seat": 0
-        }
 
         self.candidate_data_list = list()
 
@@ -125,6 +216,17 @@ class ElectionsIrelandScraper(object):
             """
             candidates = r_table.xpath(".//tr")
             for candiate in candidates:
+                candidate_data = {
+                    "name": None,
+                    "party": None,
+                    "proof_vote": None,
+                    "share_vote": None,
+                    "quota": None,
+                    "count": 0,
+                    "status": None,
+                    "seat": 0
+                }
+
                 modifier = "b/"
                 """ Candidate """
                 selected_candidate = candiate.xpath(".//"+modifier+"a[contains (@href, 'candidate')]/text()")
@@ -175,7 +277,7 @@ class ElectionsIrelandScraper(object):
 
                 candidate_data['voters_area'] = self.area_data['voters_area']
                 candidate_data['election_date'] = self.area_data['election_date']
-                candidate_data['uuid'] = create_sha256_custom_id()
+                candidate_data['uuid'] = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
                 ## ADD TO THE CANDIDATE DATA LIST
                 self.candidate_data_list.append(candidate_data)
 
@@ -203,15 +305,6 @@ class ElectionsIrelandScraper(object):
             if len(total_poll_percent) > 0:
                 self.area_data['total_poll_percent'] = str_replace_items(total_poll_percent[0], {"%"}).strip()
 
-            """ DEBUG ONLY
-            for data in self.area_data.itervalues():
-                print data
-
-            for cd in candidate_data_list:
-                print "------------- candidate\n"
-                for data in cd.itervalues():
-                    print data
-            """
 
 def str_extract_from_list(emt_list):
     for element in emt_list:
@@ -227,8 +320,3 @@ def str_replace_items(str_base, items=set(), replace_with=""):
         str_base = str_base.replace(item, replace_with)
     return str_base
 
-def create_sha256_custom_id():
-    """Simple method to create sha256 string as ids
-        UUID throws json encoding error, this is a workaround
-    """
-    return sha256(uuid.uuid4().hex).hexdigest()

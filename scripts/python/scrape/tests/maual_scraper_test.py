@@ -23,6 +23,7 @@ def load_file_content(file_name):
 
 if __name__ == "__main__":
     file_name = "http-__electionsireland.org_result.cfmQMelection=2016&cons=204.html"
-    html = load_file_content(file_name)
+    file_name_candidate_page = "http-__electionsireland.org_candidate.cfmQMID=3189.html"
+    html = load_file_content(file_name_candidate_page)
     eis = ElectionsIrelandScraper(html)
-    result = eis.check_content_page()
+    result = eis.check_content_page(file_name_candidate_page)
