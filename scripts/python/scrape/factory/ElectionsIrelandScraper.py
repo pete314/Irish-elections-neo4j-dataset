@@ -8,13 +8,18 @@ Description: This is a custom content scraper for ElectionsIreland.org
 Notes: This class is a disaster(complexity, readability, not reusable),
         @todo: should be refactored if used in production
 """
+from store.neo4j.Neo4jWrapper import Neo4jWrapper
 from BeautifulSoup import BeautifulSoup
 from lxml import html
+from hashlib import sha256
+import uuid
 
 class ElectionsIrelandScraper(object):
     def __init__(self, html_content):
         self.html_content = html_content
         self.area_data = {
+            "uuid": None,
+            "election_date": None,
             "voters_area": None,
             "voters_county": None,
             "seats": None,
@@ -35,8 +40,29 @@ class ElectionsIrelandScraper(object):
         element = soup.find("span", {"class": "title3"})
         self.election = element.next
         if "General Election" in self.election:
+            self.area_data['uuid'] = create_sha256_custom_id()
+            self.area_data['election_date'] = self.election.replace("General Election: ", "").strip()
             self.parse_consent_details()
             self.parse_total_voters()
+            self.create_neo_nodes_election()
+
+    def create_neo_nodes_election(self):
+        """ Simple node creation
+        :return:
+        """
+        election_area_create_statement = "CREATE (const:Constituency {id:{uuid}, area:{voters_area}, county:{voters_county}," \
+                                  " date:{election_date}, seats:{seats}, candidates:{candidates}, counts:{counts}," \
+                                  " electorate:{electorate}, quota:{quota}, total_valid:{total_valid}," \
+                                  " total_valid_percent:{total_valid_percent}, spoilt_votes:{spoilt_votes}," \
+                                  " total_poll:{total_poll}, total_poll_percent:{total_poll_percent}})"
+
+        area_candidate_create_statement = "CREATE (candid:ConstituencyCandidate {id:{uuid}, area:{voters_area}," \
+                                          " election_date:{election_date}, name:{name}, party:{party}, proof_vote:{proof_vote}," \
+                                          " share_vote:{share_vote}, quota:{quota}, count:{count}, status:{status}, seat:{seat}})"
+
+        db = Neo4jWrapper("", "")
+        db.insert_single_node(election_area_create_statement, self.area_data)
+        db.insert_multiple_nodes(area_candidate_create_statement, self.candidate_data_list)
 
     def parse_consent_details(self):
         """ Parse consent details """
@@ -66,10 +92,6 @@ class ElectionsIrelandScraper(object):
                 elif "Quota" in str_holder:
                     self.area_data['quota'] = int(str_replace_items(str_holder, {"Quota:"}))
 
-        """
-        for data in self.area_data.itervalues():
-            print data
-        """
 
     def parse_total_voters(self):
         """Parse the area results"""
@@ -151,6 +173,9 @@ class ElectionsIrelandScraper(object):
                 if len(st_seat) > 0:
                     candidate_data['seat'] = st_seat[0].strip()
 
+                candidate_data['voters_area'] = self.area_data['voters_area']
+                candidate_data['election_date'] = self.area_data['election_date']
+                candidate_data['uuid'] = create_sha256_custom_id()
                 ## ADD TO THE CANDIDATE DATA LIST
                 self.candidate_data_list.append(candidate_data)
 
@@ -182,7 +207,6 @@ class ElectionsIrelandScraper(object):
             for data in self.area_data.itervalues():
                 print data
 
-
             for cd in candidate_data_list:
                 print "------------- candidate\n"
                 for data in cd.itervalues():
@@ -202,3 +226,9 @@ def str_replace_items(str_base, items=set(), replace_with=""):
     for item in items:
         str_base = str_base.replace(item, replace_with)
     return str_base
+
+def create_sha256_custom_id():
+    """Simple method to create sha256 string as ids
+        UUID throws json encoding error, this is a workaround
+    """
+    return sha256(uuid.uuid4().hex).hexdigest()
