@@ -11,12 +11,28 @@ ConstituencyCandidate: id, area, election_date, name, party, proof_vote, share_v
 
 QUERY DESCRIPTION:
 ===================
-Select all the candidates, parties and votes, with constituency 
-where more than 10000 people voted
+Find cadidates who got more than 10000 votes with parties
 */
 
 MATCH 
-	(cc:ConstituencyCandidate )-[r:RUN_FOR]->()
+	pth=(c:Constituency)--(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
 WHERE
-	length(cc.proof_vote) > 5
+	length(ph.votes) > 5
+AND
+    c.name = ph.constituency
+RETURN pth
+
+/******************************
+	What I tried before
+		Just as proof of work :)
+*******************************/
+MATCH p=(a:PersonHistory)-->(b:Constituency)-->(c:PersonHistory)
+WHERE a.party=~'.*Fine.*' AND c.constituency=~'.*alway.*'
+RETURN nodes(p)
+
+
+MATCH 
+	(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
+WHERE
+	length(ph.votes) > 5
 RETURN r
