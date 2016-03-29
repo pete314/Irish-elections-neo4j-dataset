@@ -18,13 +18,13 @@ The crawler is written in python, which has 3 parts(kept in ./supports):
 *Neo4j wrapper: deals with dabatase communication. Really simple straigth forward class connected with scraper. 
 There are couple support classes, python files not worth meantioning in depth.
 
-¬¬¬
+```
 IF YOU RUN THE CRAWLER MAKE SURE THAT YOU UNDERSTAND WHAT THE DEPTH FACTOR IS, EVEN WITH DEPTH=4 IT IS POSSIBLE TO SCRAPE 10 000+ pAGES!
 
 Notes:
 The neo4j instanc does not use username and password as there is no need for it on local only setup.
 Currently there are 22000+ nodes in the database with 5 different node structure and with 60000+ relationships in 3 relation types.
-¬¬¬
+```
 
 
 ## Queries
