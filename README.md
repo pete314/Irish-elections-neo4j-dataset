@@ -16,7 +16,7 @@ The crawler is written in python, which has 3 parts(kept in ./supports):
 *Downloader & LinkCrawler: Simple crwaler with capability to identify errors and retry if any. Written with "ethical crawling" in mind, so if robots.txt block the crawler, no result is returned. LinkCrwaler keep track of visited pages in it own thread, so if multi threaded duplicates may exist.
 *Scraper: Is a class written to be used within LinkCrawler, can be fully customized to support any page layout/dom, uses sax equalent lxml to deal with html tree, mostly with xpath.
 *Neo4j wrapper: deals with dabatase communication. Really simple straigth forward class connected with scraper. 
-There are coplue support classes, python files not worth meantioning in depth.
+There are couple support classes, python files not worth meantioning in depth.
 
 ¬¬¬
 IF YOU RUN THE CRAWLER MAKE SURE THAT YOU UNDERSTAND WHAT THE DEPTH FACTOR IS, EVEN WITH DEPTH=4 IT IS POSSIBLE TO SCRAPE 10 000+ pAGES!
@@ -60,3 +60,5 @@ RETURN
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
+2. [Python 2 documentation](https://docs.python.org/2/), the offical python v2.* documentation.
+3. [electionsireland.org/](http://electionsireland.org/), data for crawling.
