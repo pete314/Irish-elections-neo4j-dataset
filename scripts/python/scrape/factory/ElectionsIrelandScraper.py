@@ -41,7 +41,7 @@ class ElectionsIrelandScraper(object):
             # THIS IS A CANDIDTE PAGE SCRAPE
             return self.scrape_candidate_page()
 
-        elif "election" in link:
+        elif "election" or "general" in link:
             # THIS IS AN ELECTION PAGE SCRAPE
             return self.scrape_election_const_result_page()
 
@@ -54,7 +54,54 @@ class ElectionsIrelandScraper(object):
         Sample page: http://electionsireland.org/party.cfm?election=2016&party=FF
         :return:
         """
+        html_tree = html.fromstring(self.html_content)
+        page_title_holder = html_tree.xpath("/html/body/table[2]/tr/td/h1/text()")
+
+        if len(page_title_holder) > 0:
+            page_title = self.extract_list_string(page_title_holder, {"\n", "\t"})
+            if page_title is not None and "Candidates by Party" in page_title:
+                party_data_list = self.extract_party_page(html_tree)
+                if len(party_data_list) > 0:
+                    return self.create_party_candidates(party_data_list)
+
         return False
+
+    def create_party_candidates(self, party_data_list):
+        """
+        Create nodes in neo4j
+        :param party_data_list: List holding dict's of data created in the below function
+        :return:
+        """
+        create_party_candidate_statement = "create (pc:PartyCandidates {id:{id}, constituency:{constituency}, party:{party}," \
+                                          " candidate:{candidate}, date:{date}})"
+        db = Neo4jWrapper("", "")
+        return db.insert_multiple_nodes(create_party_candidate_statement, party_data_list)
+
+    def extract_party_page(self, html_tree):
+        """ Extract the data from the party pages
+        :param html_tree:
+        :return:
+        """
+        party_data_list = list()
+        result_date = self.extract_list_string(html_tree.xpath("/html/body/table[2]/tr/td/h2/em/text()"), {"\n", "\t"})
+        if result_date is not None:
+            data_table = html_tree.xpath("/html/body/table[4]/tbody/tr/td/table[2]/tr")
+            for row in data_table:
+                candidate_party = {'date': result_date}
+                modifier = ""
+                const_holder = row.xpath(".//td[1]/a/text()")
+                if len(const_holder) == 0:
+                    modifier = "/strong"
+                    const_holder = row.xpath(".//td[1]/a" + modifier + "/text()")
+
+                candidate_party['constituency'] = self.extract_list_string(const_holder, {"\n", "\r"})
+                candidate_party['party'] = self.extract_list_string(row.xpath(".///td[2]/img/@title"), {"\n", "\t", "Non party/"})
+                candidate_party['candidate'] = self.extract_list_string(row.xpath(".//td[3]/a" + modifier + "/text()"), {"\n", "\t"})
+                candidate_party['id'] = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
+
+                party_data_list.append(candidate_party)
+
+        return party_data_list
 
     def scrape_candidate_page(self):
         """
@@ -65,7 +112,7 @@ class ElectionsIrelandScraper(object):
         candidant_holder = html_tree.xpath("/html/body/table[3]/tr/td[2]/h1/text()")
 
         if len(candidant_holder) > 0:
-            candidate_name = self.extract_list_sting(candidant_holder, {"\n", "\t"})
+            candidate_name = self.extract_list_string(candidant_holder, {"\n", "\t"})
             candidate_history_list = self.extract_candidate_history(html_tree)
             if len(candidate_history_list) > 0:
                 return self.create_candidate_history_nodes(candidate_name, candidate_history_list)
@@ -85,7 +132,7 @@ class ElectionsIrelandScraper(object):
 
         create_person_history_node = "Create (ph:PersonHistory {id:{id}, election:{election}, date:{date}, party:{party}," \
                                      " status:{status}, constituency:{constituency}, seat:{seat}, votes:{votes}, share:{share}," \
-                                     " quota:{quota}}) "
+                                     " quota:{quota}, person:'" + candidate + "'}) "
                                      # "create (p:Person {id:'"+p_uuid+"'})-[:RUN_FOR]->ph"
         db = Neo4jWrapper("", "")
         db.insert_single_node(create_person_node, person_dict)
@@ -102,23 +149,23 @@ class ElectionsIrelandScraper(object):
             if len(date_holder) == 0:
                 continue
 
-            history_data['date'] = self.extract_list_sting(date_holder, {"\n", "\t"})
-            history_data['election'] = self.extract_list_sting(row.xpath("./td[3]/b/text()"), {"\n", "\t"})
-            history_data['party'] = self.extract_list_sting(row.xpath("./td[5]/a/img/@title"), {"\n", "\t", "Non party/"})
-            history_data['status'] = self.extract_list_sting(row.xpath("./td[7]/b/text()"), {"\n", "\t"})
-            history_data['constituency'] = self.extract_list_sting(row.xpath("./td[9]/b/a/text()"), {"\n", "\t"})
-            history_data['seat'] = self.extract_list_sting(row.xpath("./td[11]/b/text()"), {"\n", "\t"})
-            history_data['count'] = self.extract_list_sting(row.xpath("./td[13]/b/text()"), {"\n", "\t"})
-            history_data['votes'] = self.extract_list_sting(row.xpath("./td[15]/b/text()"), {"\n", "\t", ","})
-            history_data['share'] = self.extract_list_sting(row.xpath("./td[17]/b/text()"), {"\n", "\t", "%"})
-            history_data['quota'] = self.extract_list_sting(row.xpath("./td[19]/b/text()"), {"\n", "\t"})
+            history_data['date'] = self.extract_list_string(date_holder, {"\n", "\t", "By Election:"})
+            history_data['election'] = self.extract_list_string(row.xpath("./td[3]/b/text()"), {"\n", "\t"})
+            history_data['party'] = self.extract_list_string(row.xpath("./td[5]/a/img/@title"), {"\n", "\t", "Non party/"})
+            history_data['status'] = self.extract_list_string(row.xpath("./td[7]/b/text()"), {"\n", "\t"})
+            history_data['constituency'] = self.extract_list_string(row.xpath("./td[9]/b/a/text()"), {"\n", "\t"})
+            history_data['seat'] = self.extract_list_string(row.xpath("./td[11]/b/text()"), {"\n", "\t"})
+            history_data['count'] = self.extract_list_string(row.xpath("./td[13]/b/text()"), {"\n", "\t"})
+            history_data['votes'] = self.extract_list_string(row.xpath("./td[15]/b/text()"), {"\n", "\t", ","})
+            history_data['share'] = self.extract_list_string(row.xpath("./td[17]/b/text()"), {"\n", "\t", "%"})
+            history_data['quota'] = self.extract_list_string(row.xpath("./td[19]/b/text()"), {"\n", "\t"})
             history_data['id'] = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
 
             candidate_history_list.append(history_data)
 
         return candidate_history_list
 
-    def extract_list_sting(self, lst, replace_set=set()):
+    def extract_list_string(self, lst, replace_set=set()):
         if len(lst) > 0:
             return str_replace_items(lst[0], replace_set).strip()
         else:
@@ -181,16 +228,19 @@ class ElectionsIrelandScraper(object):
             td_list = table.xpath(".//tr/td")
             for td in td_list:
                 str_holder = str_replace_items(td.text,  {"\n", "\r", "\t", " ", ","})
+                if str_holder is None:
+                    continue
+
                 if "Seats" in str_holder:
-                    self.area_data['seats'] = int(str_replace_items(str_holder, {"Seats"}))
+                    self.area_data['seats'] = str_replace_items(str_holder, {"Seats"})
                 elif "Candidates" in str_holder:
-                    self.area_data['candidates'] = int(str_replace_items(str_holder, {"Candidates"}))
+                    self.area_data['candidates'] = str_replace_items(str_holder, {"Candidates"})
                 elif "Counts" in str_holder:
-                    self.area_data['counts'] = int(str_replace_items(str_holder, {"Counts"}))
+                    self.area_data['counts'] = str_replace_items(str_holder, {"Counts"})
                 elif "Electorate" in str_holder:
-                    self.area_data['electorate'] = int(str_replace_items(str_holder, {"Electorate:"}))
+                    self.area_data['electorate'] = str_replace_items(str_holder, {"Electorate:", ","})
                 elif "Quota" in str_holder:
-                    self.area_data['quota'] = int(str_replace_items(str_holder, {"Quota:"}))
+                    self.area_data['quota'] = str_replace_items(str_holder, {"Quota:", ","})
 
 
     def parse_total_voters(self):
@@ -307,14 +357,18 @@ class ElectionsIrelandScraper(object):
 
 def str_extract_from_list(emt_list):
     for element in emt_list:
-        element = element
         if len(element) > 0 and element is not None:
             return element
+
+    return None
 
 
 
 def str_replace_items(str_base, items=set(), replace_with=""):
     """Simple recursive replace for multiple elements to replace"""
+    if str_base is None:
+        return None
+
     for item in items:
         str_base = str_base.replace(item, replace_with)
     return str_base

@@ -107,8 +107,9 @@ class LinkCrawler(object):
 
             """
             Debug only
-            """
             write_to_disk(site, html)
+            """
+
             if self.scraper is not None and isinstance(self.scraper, ElectionsIrelandScraper):
                 data_scraper = ElectionsIrelandScraper(html)
                 data_scraper.check_content_page(site)
