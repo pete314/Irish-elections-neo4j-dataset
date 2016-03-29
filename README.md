@@ -2,13 +2,14 @@
 ###### Student name, G00123456
 
 ## Introduction
-The project has 3 parts:
-*Retreive data from internet about Irish Voting result focusing on Constituency, Candidates, Political Parties
-*Strucutre the data and create apropiate nodes and relations in Neo4j
-*Create queries fro retreiving interesting data about results
+The project has the following parts:
+1. Retreive data from internet about Irish Voting result focusing on Constituency, Candidates, Political Parties
+2. Strucutre the data and create apropiate nodes and relations in Neo4j
+3. Create queries fro retreiving interesting data about results
 
 This project is focusing on Candidates and Constituency and retreives election results from these two entry points. Candidate information is not limited to Irish elections.
 
+Backups can be found in supports folder along with the setup script. Please use the larges backup nuber in order to setup the lates dataset.
 
 ## Database
 After looking at the election results and the data associated with it I realized that I could write a handy crawler with a specific scraper for the purpose. The scraper is designed to extract data from [electionsireland.org/](http://electionsireland.org/).
