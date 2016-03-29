@@ -35,9 +35,12 @@ def startin_scraper():
     :return: None
     """
     site_base_url = 'http://electionsireland.org'
-    site_starting_point = 'http://electionsireland.org/results/general/index.cfm'
-    depth_no = 4
-    focus_set = {"election", "candidate", "party", "dail", "general"}
+    site_starting_point = 'http://electionsireland.org/results/general/31dail.cfm'
+    depth_no = 3
+    # This will result in 9700 pages to scrape with dept=4
+    # focus_set = {"election", "candidate", "party", "dail", "general"}
+    # This will result in 3428 pages scraped with dept=3
+    focus_set = {"election=2011", "candidate.cfm?ID="}
     print_header(site_base_url, site_starting_point, depth_no, focus_set)
 
     #START the process

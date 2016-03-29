@@ -83,7 +83,7 @@ class ElectionsIrelandScraper(object):
         :return:
         """
         party_data_list = list()
-        result_date = self.extract_list_string(html_tree.xpath("/html/body/table[2]/tr/td/h2/em/text()"), {"\n", "\t"})
+        result_date = self.extract_list_string(html_tree.xpath("/html/body/table[2]/tr/td/h2/em/text()"), {"\n", "\t", "'"})
         if result_date is not None:
             data_table = html_tree.xpath("/html/body/table[4]/tbody/tr/td/table[2]/tr")
             for row in data_table:
@@ -96,7 +96,7 @@ class ElectionsIrelandScraper(object):
 
                 candidate_party['constituency'] = self.extract_list_string(const_holder, {"\n", "\r"})
                 candidate_party['party'] = self.extract_list_string(row.xpath(".///td[2]/img/@title"), {"\n", "\t", "Non party/"})
-                candidate_party['candidate'] = self.extract_list_string(row.xpath(".//td[3]/a" + modifier + "/text()"), {"\n", "\t"})
+                candidate_party['candidate'] = self.extract_list_string(row.xpath(".//td[3]/a" + modifier + "/text()"), {"\n", "\t", "'"})
                 candidate_party['id'] = hashlib.md5(str(random.randint(256, 9999999)) + uuid.uuid4().hex).hexdigest()
 
                 party_data_list.append(candidate_party)
@@ -112,7 +112,7 @@ class ElectionsIrelandScraper(object):
         candidant_holder = html_tree.xpath("/html/body/table[3]/tr/td[2]/h1/text()")
 
         if len(candidant_holder) > 0:
-            candidate_name = self.extract_list_string(candidant_holder, {"\n", "\t"})
+            candidate_name = self.extract_list_string(candidant_holder, {"\n", "\t", "'"})
             candidate_history_list = self.extract_candidate_history(html_tree)
             if len(candidate_history_list) > 0:
                 return self.create_candidate_history_nodes(candidate_name, candidate_history_list)
