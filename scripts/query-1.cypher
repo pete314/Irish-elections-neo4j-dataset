@@ -15,12 +15,10 @@ Find cadidates who got more than 10000 votes with parties
 */
 
 MATCH 
-	pth=(c:Constituency)--(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
+	(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
 WHERE
 	length(ph.votes) > 5
-AND
-    c.name = ph.constituency
-RETURN pth
+RETURN r
 
 /******************************
 	What I tried before
