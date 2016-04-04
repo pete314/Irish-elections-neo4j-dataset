@@ -11,14 +11,16 @@ ConstituencyCandidate: id, area, election_date, name, party, proof_vote, share_v
 
 QUERY DESCRIPTION:
 ===================
-Find cadidates who got more than 10000 votes with parties
+Find candidates who got elected for each political party
 */
 
 MATCH 
-	(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
+	(ph:PersonHistory:Name)-[r:RUN_FOR]->(p:Party)
 WHERE
-	length(ph.votes) > 5
-RETURN r
+	ph.date = "2016"
+AND
+	ph.status = "Elected"
+RETURN distinct r
 
 /******************************
 	What I tried before
