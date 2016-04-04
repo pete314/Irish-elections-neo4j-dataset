@@ -32,13 +32,15 @@ Currently there are 22000+ nodes in the database with 5 different node structure
 Then explain them one by one in the following sections.
 
 #### Query one title
-Find candidates and political who got more than 10000 votes
+Find candidates who got elected for each political party. The query will match the relations between Political parties and PersonHistory and then apply filers for status and election date.
 ```cypher
 MATCH 
 	(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
 WHERE
-	length(ph.votes) > 5
-RETURN r
+	ph.date = "2016"
+AND
+	ph.status = "Elected"
+RETURN distinct r
 ```
 
 #### Query two title
