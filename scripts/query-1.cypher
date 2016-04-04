@@ -15,7 +15,7 @@ Find candidates who got elected for each political party
 */
 
 MATCH 
-	(ph:PersonHistory:Name)-[r:RUN_FOR]->(p:Party)
+	(ph:PersonHistory)-[r:RUN_FOR]->(p:Party)
 WHERE
 	ph.date = "2016"
 AND
