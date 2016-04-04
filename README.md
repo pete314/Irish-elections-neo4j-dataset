@@ -14,9 +14,9 @@ Backups can be found in supports folder along with the setup script. Please use 
 ## Database
 After looking at the election results and the data associated with it I realized that I could write a handy crawler with a specific scraper for the purpose. The scraper is designed to extract data from [electionsireland.org/](http://electionsireland.org/).
 The crawler is written in python, which has 3 parts(kept in ./supports):<br/>
-*Downloader & LinkCrawler: Simple crwaler with capability to identify errors and retry if any. Written with "ethical crawling" in mind, so if robots.txt block the crawler, no result is returned. LinkCrwaler keep track of visited pages in it own thread, so if multi threaded duplicates may exist.<br/>
-*Scraper: Is a class written to be used within LinkCrawler, can be fully customized to support any page layout/dom, uses sax equalent lxml to deal with html tree, mostly with xpath.<br/>
-*Neo4j wrapper: deals with dabatase communication. Really simple straigth forward class connected with scraper. 
+**Downloader & LinkCrawler**: Simple crwaler with capability to identify errors and retry if any. Written with "ethical crawling" in mind, so if robots.txt block the crawler, no result is returned. LinkCrwaler keep track of visited pages in it own thread, so if multi threaded duplicates may exist.<br/>
+**Scraper**: Is a class written to be used within LinkCrawler, can be fully customized to support any page layout/dom, uses sax equalent lxml to deal with html tree, mostly with xpath.<br/>
+**Neo4j wrapper**: deals with dabatase communication. Really simple straigth forward class connected with scraper. 
 There are couple support classes, python files not worth meantioning in depth.
 
 The script is only handling data collection, and all additional relations are added after script finishes. This is requred as there could be millions of realtions even between 1000's of nodes. The scripts to create realations can be found in the support folder.
