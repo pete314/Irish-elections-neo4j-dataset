@@ -18,7 +18,6 @@ RETURN p
 	
 /******************************
 	What I tried before
-		Just as proof of work :)
 
 		The Queries below are for different result set
 *******************************/

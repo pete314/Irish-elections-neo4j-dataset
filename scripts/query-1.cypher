@@ -24,7 +24,6 @@ RETURN distinct r
 
 /******************************
 	What I tried before
-		Just as proof of work :)
 *******************************/
 MATCH p=(a:PersonHistory)-->(b:Constituency)-->(c:PersonHistory)
 WHERE a.party=~'.*Fine.*' AND c.constituency=~'.*alway.*'

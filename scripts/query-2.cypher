@@ -32,7 +32,6 @@ order by
 
 /******************************
 	What I tried before
-		Just as proof of work :)
 *******************************/
 /////////////
 MATCH (ek:ConstituencyCandidate{name:"Enda Kenny"}),(nb:ConstituencyCandidate{name:".*"}), p = allShortestPaths((ek)-[r:RUN_IN_CONST]-(nb))
