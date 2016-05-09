@@ -1,5 +1,4 @@
 # Irish Constituencies Neo4j Database
-###### Peter Nagy, G00317399
 
 ## Introduction
 In 2016 there was a general election in the Republic of Ireland.
@@ -12,10 +11,10 @@ This project is inspired by the well known FiveThirtyEight blog by Nate Silver:
 
 > **leighbureaultd.com**
 
-![Nate Silver's prediction](https://raw.githubusercontent.com/pete314/Irish-elections-neo4j-dataset/master/md_img/nate.png?token=AIYB_DhDCjsg3cnVqXwd91N__izWzGWrks5XE3zNwA%3D%3D)
+![Nate Silver's prediction](https://raw.githubusercontent.com/pete314/Irish-elections-neo4j-dataset/master/md_img/nate.png)
 
 #####Irish constituencies
-![Irish constituencies - map](https://raw.githubusercontent.com/pete314/Irish-elections-neo4j-dataset/master/md_img/irish_const_map_2011-2016.png?token=AIYB_F9mARFaQc3gxawzest4xgewIGvzks5XE30lwA%3D%3D)
+![Irish constituencies - map](https://raw.githubusercontent.com/pete314/Irish-elections-neo4j-dataset/master/md_img/irish_const_map_2011-2016.png)
 Background of these constituencies with more details can be found [Parliamentary constituencies in the Republic of Ireland - wikipedia](https://en.wikipedia.org/wiki/Parliamentary_constituencies_in_the_Republic_of_Ireland)
 ## Implementation
 The project has the following parts:<br/>
@@ -167,6 +166,11 @@ MATCH p=shortestPath(
 )
 RETURN p
 ```
+
+## Notes
+**Github does not support large files, so the final working database, with data is available at [Google Drive](https://drive.google.com/file/d/0B4tkAG6jw0etWEVxWFViSHhYcEk/view?usp=sharing)**<br>
+The exported cypher queries contain a single large transaction which can take a long time to import, but there are options to import with split. 
+
 
 ## References
 1. [Neo4J website](http://neo4j.com/), the website of the Neo4j database.
